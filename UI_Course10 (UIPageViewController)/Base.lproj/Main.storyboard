@@ -13,7 +13,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="UI_Course10__UIPageViewController_" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="vc" id="BYZ-38-t0r" customClass="ViewController" customModule="UI_Course10__UIPageViewController_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -44,7 +44,7 @@
         <!--PageVC-->
         <scene sceneID="TnX-BK-BNs">
             <objects>
-                <pageViewController storyboardIdentifier="PageVC" autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="fe1-2J-BAk" customClass="PageVC" customModule="UI_Course10__UIPageViewController_" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="PageVC" autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="none" id="fe1-2J-BAk" customClass="PageVC" customModule="UI_Course10__UIPageViewController_" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vSy-xP-WQc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="855" y="121"/>
@@ -57,7 +57,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Много текста" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UNQ-9h-GBw">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Много текста" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UNQ-9h-GBw">
                                 <rect key="frame" x="20" y="158" width="374" height="29"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <nil key="textColor"/>
@@ -74,6 +74,13 @@
                                 <color key="pageIndicatorTintColor" red="0.4949596906" green="0.69031917529999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="currentPageIndicatorTintColor" cocoaTouchSystemColor="darkTextColor"/>
                             </pageControl>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qja-7E-24d">
+                                <rect key="frame" x="82" y="632" width="250" height="30"/>
+                                <state key="normal" title="Завершить просмотр презентации"/>
+                                <connections>
+                                    <action selector="closePresentationButton:" destination="y6x-2i-p3D" eventType="touchUpInside" id="QEt-Hs-AqB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.84608807620000004" green="1" blue="0.80899394530000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -81,13 +88,18 @@
                             <constraint firstItem="Uai-Px-Npl" firstAttribute="trailing" secondItem="UNQ-9h-GBw" secondAttribute="trailing" constant="20" id="7g2-UO-bTz"/>
                             <constraint firstItem="UNQ-9h-GBw" firstAttribute="top" secondItem="Uai-Px-Npl" secondAttribute="top" constant="114" id="8jC-m9-rPQ"/>
                             <constraint firstItem="Uai-Px-Npl" firstAttribute="bottom" secondItem="h37-4E-gN8" secondAttribute="bottom" id="A9N-Ki-Ojd"/>
+                            <constraint firstItem="qja-7E-24d" firstAttribute="top" secondItem="o7e-N7-f9i" secondAttribute="bottom" constant="119" id="Bdc-YL-Bch"/>
                             <constraint firstItem="h37-4E-gN8" firstAttribute="centerX" secondItem="Uai-Px-Npl" secondAttribute="centerX" id="CN5-fI-tUQ"/>
                             <constraint firstItem="o7e-N7-f9i" firstAttribute="centerX" secondItem="Uai-Px-Npl" secondAttribute="centerX" id="Piv-Od-e1Q"/>
                             <constraint firstItem="UNQ-9h-GBw" firstAttribute="leading" secondItem="Uai-Px-Npl" secondAttribute="leading" constant="20" id="Une-jE-i29"/>
+                            <constraint firstItem="qja-7E-24d" firstAttribute="leading" secondItem="Uai-Px-Npl" secondAttribute="leading" constant="82" id="VQh-lT-18M"/>
+                            <constraint firstItem="Uai-Px-Npl" firstAttribute="trailing" secondItem="qja-7E-24d" secondAttribute="trailing" constant="82" id="l7E-kq-A4p"/>
+                            <constraint firstItem="h37-4E-gN8" firstAttribute="top" secondItem="qja-7E-24d" secondAttribute="bottom" constant="163" id="pKK-jG-EDp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Uai-Px-Npl"/>
                     </view>
                     <connections>
+                        <outlet property="closePresentation" destination="qja-7E-24d" id="VSZ-7U-SZ0"/>
                         <outlet property="emojiLabel" destination="o7e-N7-f9i" id="1HX-y6-ggH"/>
                         <outlet property="pageControl" destination="h37-4E-gN8" id="lpY-Mt-FC5"/>
                         <outlet property="presentTextLabel" destination="UNQ-9h-GBw" id="Z0Z-Pt-zle"/>

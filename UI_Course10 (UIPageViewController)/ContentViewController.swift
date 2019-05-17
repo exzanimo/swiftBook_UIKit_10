@@ -13,21 +13,31 @@ class ContentViewController: UIViewController {
     @IBOutlet weak var presentTextLabel: UILabel!
     @IBOutlet weak var emojiLabel: UILabel!
     @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var closePresentation: UIButton!
+    
+    var presentText = ""
+    var emoji = ""
+    var curentPage = 0 //номер текущей страницы
+    var numberOfPages = 0 //кол-во страниц
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        presentTextLabel.text = presentText
+        emojiLabel.text = emoji
+        pageControl.numberOfPages = numberOfPages
+        if curentPage == numberOfPages - 1 {
+            closePresentation.isHidden = false }
+            else {
+                pageControl.currentPage = curentPage
+            }
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func closePresentationButton(_ sender: UIButton) {
+        
+        let pageVC = storyboard?.instantiateViewController(withIdentifier: "PageVC") as? PageVC
+        pageVC?.closePage()
+        dismiss(animated: true, completion: nil) //закрытие страницы
     }
-    */
-
-}
+}   
